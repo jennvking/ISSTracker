@@ -1,0 +1,31 @@
+body {
+    background-image: url("https://static.pexels.com/photos/6546/sky-night-space-trees.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+   color:white;
+}
+
+#paraText {
+    width: 40%;
+    margin-top: 10px;
+}
+
+#map {
+    height: 700px;
+}
+
+.header {
+    text-align: center;
+}
+
+#mainButtons {
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+#belowMap {
+    display: inline-block;
+}

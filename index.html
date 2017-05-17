@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="issApp">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Simple Map">
+  <meta name="keywords" content="ng-map,AngularJS,center">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+  <title>ISS Tracker</title>
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
+  <!-- endbower -->
+
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/app/style/style.css">
+  <!-- endinject -->
+</head>
+
+
+<!-- Within the map we call the marker icon and draw the line...  That's it! -->
+
+<body ng-controller="issNgMapController as vmMap">
+  <div class="header">
+    <h1>Where in the world is the ISS?</h1>
+  </div>
+
+
+  <div ng-controller="issInfoController as vmIss">
+    <div class="well">
+      <ng-map id="map" default-style="false" zoom="4" center="{{vmIss.latlon}}" zoom-to-include="auto" map-type-control="true"
+        map-type-control-options='{position:"top_right", style:"dropdown_menu", mapTypeIds:["HYBRID","ROADMAP","SATELLITE","TERRAIN"]}'>
+        <marker icon="{{vmIss.customIcon}}" position="{{vmIss.latitude}}, {{vmIss.longitude}}"></marker>
+        <shape name="polyline" path="{{vmIss.points}}" geodesic="true" stroke-color="#FF0000" stroke-opacity="1.0" stroke-weight="4">
+        </shape>
+      </ng-map>
+    </div>
+
+    <div id="paraText" class="panel panel-primary">
+      <div class="panel-body">
+        <p>The ISS circles the globe every 90 minutes at a speed of 17,500 mph (28,000 kph). Find the ISS now!</p>
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" ng-click="vmIss.startTimer()">Start Tracker</button>
+      <button type="button" class="btn btn-default" ng-click="vmIss.stopTimer()">Stop Tracker</button>
+    </div>
+
+  </div>
+
+  <!-- Hand script declarations-->
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyD_4w8QF3phpFPESSDQoNHa3C8g6ilaqiM&libraries=places"></script>
+  <!-- bower:js -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/toastr/toastr.js"></script>
+  <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
+  <!-- endbower -->
+
+  <!-- inject:js -->
+  <script src="/app/app.js"></script>
+  <script src="/app/issInfoController/issinfo.factory.js"></script>
+  <script src="/app/issInfoController/issingo.controller.js"></script>
+  <script src="/app/ngMapController/issngmap.controller.js"></script>
+  <!-- endinject -->
+  </div>
+</body>
+
+</html>

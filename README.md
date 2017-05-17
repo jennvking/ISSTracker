@@ -1,0 +1,1 @@
+This ISS Tracker application allows the user to track the Internation Space Station through two APIs - ng-map and through the ISS API. The Ng-map directive calls the google map to the page and the ISS API calls the latitude and longitude of the ISS. Used together, the google map center on wherever the ISS is at any given time.
